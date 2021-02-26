@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         space3.classList.contains('P1')&&
         space4.classList.contains('P1')){
 
-            result.innerHTML = "<img src='../Connect4/p1wins.png'>";
+            result.innerHTML = "<img src='../Connect4/Images/p1wins.png'>";
         }
 
         else if (space1.classList.contains('P2')&&
@@ -68,7 +68,7 @@ document.addEventListener('DOMContentLoaded', ()=> {
         space3.classList.contains('P2')&&
         space4.classList.contains('P2')){
 
-            result.innerHTML ="<img src='../Connect4/p2wins.png'>";
+            result.innerHTML ="<img src='../Connect4/Images/p2wins.png'>";
         }
     }
 
