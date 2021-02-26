@@ -18,14 +18,14 @@
     
 
   .P1 {
-    background-image: url(../Connect4/Images/field.png);
+    background-image: url(Images/field.png);
     background-color: red;
     border-radius: 80px black
 ;
   }
 
   .P2 {
-    background-image: url(../Connect4/Images/field.png);
+    background-image: url(Images/field.png);
     background-color: blue;
     border-radius: 80px black;
     
@@ -38,7 +38,7 @@
 
   h2 {
       text-align: center;
-      background-image: url(../Connect4/Images/Title.png);
+      background-image: url(Images/Title.png);
       background-repeat: no-repeat;
       background-position: center;
       
