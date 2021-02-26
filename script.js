@@ -21,12 +21,12 @@ document.addEventListener('DOMContentLoaded', ()=> {
                     spaces[index].classList.add('occupied');
                     spaces[index].classList.add('P1');
                     currentplayer = 2;
-                    DisplayCurrentPlayer.innerHTML = currentplayer;
+                    DisplayCurrentPlayer.innerHTML = "<img src='Images/p1.png'>";
                 }else if( currentplayer === 2) {
                     spaces[index].classList.add('occupied');
                     spaces[index].classList.add('P2');
                     currentplayer = 1;
-                    DisplayCurrentPlayer.innerHTML = currentplayer;
+                    DisplayCurrentPlayer.innerHTML = "<img src='Images/p2.png'>";
                 }
                 }else alert("Wait, That's illegal!");
            }
