@@ -1,37 +1,40 @@
+// im very proud of myself because i was able to write a bit of code myself with the little 
+// bit of connection i had and time constraint. i used examples and other codes to understand what i was making, 
+// this still feels a bit fuzzy but for the most part i understand it but i also understand 
+// that there are ways to make the same thing differently and thats my goal. 
+// i did copy and paste the winningArrays and struggled a lot with the squares functions
+// and loops. but the more i practice the more it seems clear
 
 document.addEventListener('DOMContentLoaded', ()=> {
-    const squares = document.querySelectorAll('.field div');
+    const spaces = document.querySelectorAll('.field div');
     const result = document.querySelector('#result');
     const DisplayCurrentPlayer = document.querySelector('#current-player');
     let currentplayer = 1;
 
-    for(var i = 0 , len = squares.length ; i < len ; i++)
+//i struggled with this  bit
+    for(var i = 0 , len = spaces.length ; i < len ; i++)
 
     (function(index){
-        //add an onclick to each square in your grid
-        squares[i].onclick = function(){
-            if(squares[index+7].classList.contains('taken')){
+        spaces[i].onclick = function(){
+            if(spaces[index+7].classList.contains('occupied')){
                 if( currentplayer === 1){
-                    squares[index].classList.add('taken');
-                    squares[index].classList.add('player-one');
-                    //change the player
+                    spaces[index].classList.add('occupied');
+                    spaces[index].classList.add('P1');
                     currentplayer = 2;
                     DisplayCurrentPlayer.innerHTML = currentplayer;
                 }else if( currentplayer === 2) {
-                    squares[index].classList.add('taken');
-                    squares[index].classList.add('player-two');
-                    //change the player
+                    spaces[index].classList.add('occupied');
+                    spaces[index].classList.add('P2');
                     currentplayer = 1;
                     DisplayCurrentPlayer.innerHTML = currentplayer;
                 }
-                //if the square below your current square is not taken, you can't go there
-                }else alert("can't add Here ");
+                }else alert("Wait, That's illegal!");
            }
     })(i)
 
-    //check the board for a win or lose
-    function ChecKBoard (){
-        //make const that shows all winning arrays
+
+
+    function CheckBoard (){
         const winningArrays = [
         [0, 1, 2, 3], [41, 40, 39, 38], [7, 8, 9, 10], [34, 33, 32, 31], [14, 15, 16, 17], [27, 26, 25, 24], [21, 22, 23, 24],
         [20, 19, 18, 17], [28, 29, 30, 31], [13, 12, 11, 10], [35, 36, 37, 38], [6, 5, 4, 3], [0, 7, 14, 21], [41, 34, 27, 20],
@@ -45,42 +48,32 @@ document.addEventListener('DOMContentLoaded', ()=> {
         [8, 15, 22, 29], [9, 16, 23, 30], [10, 17, 24, 31], [11, 18, 25, 32], [12, 19, 26, 33], [13, 20, 27, 34]
         ];
 
-        //now take the 4 values in each winningArray & plug them into the squares values
+
         for(let y = 0 ; y < winningArrays.length ; y++ ){
+        const space1 = spaces[winningArrays[y][0]];
+        const space2 = spaces[winningArrays[y][1]];
+        const space3 = spaces[winningArrays[y][2]];
+        const space4 = spaces[winningArrays[y][3]];
 
-        const square1 = squares[winningArrays[y][0]];
-        const square2 = squares[winningArrays[y][1]];
-        const square3 = squares[winningArrays[y][2]];
-        const square4 = squares[winningArrays[y][3]];
+        if (space1.classList.contains('P1')&&
+        space2.classList.contains('P1')&&
+        space3.classList.contains('P1')&&
+        space4.classList.contains('P1')){
 
-        //now check those arrays to see if they all have the class of player-one
-        if (square1.classList.contains('player-one')&&
-            square2.classList.contains('player-one')&&
-            square3.classList.contains('player-one')&&
-            square4.classList.contains('player-one')){
-            //if they do, player-one is passed as the winner
-            result.innerHTML= ' Player One Wins!';
-            //remove ability to change result
+            result.innerHTML = "<img src='../Connect4/p1wins.png'>";
         }
 
-        //now check to see if they all have the classname player two
-        else if (square1.classList.contains('player-two')&&
-                 square2.classList.contains('player-two')&&
-                 square3.classList.contains('player-two')&&
-                 square4.classList.contains('player-two')){
+        else if (space1.classList.contains('P2')&&
+        space2.classList.contains('P2')&&
+        space3.classList.contains('P2')&&
+        space4.classList.contains('P2')){
 
-            //if they do, player-two is passed as the winner as well as the chip positions
-            result.innerHTML ='Player Two Wins!';
-
-//            let forTwo = 'Player two Wins!';
-//            result.textContent = forTwo;
-
+            result.innerHTML ="<img src='../Connect4/p2wins.png'>";
         }
     }
 
 }
 
-//add an event listener to each square that will trigger the checkBoard function on click
-squares.forEach (Anything => Anything.addEventListener('click', ChecKBoard));
+spaces.forEach (Anything => Anything.addEventListener('click', CheckBoard));
 
 }) 
